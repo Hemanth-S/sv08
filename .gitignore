@@ -1,0 +1,14 @@
+# Klipper / Moonraker runtime files we don't want in git
+*.log
+*.bak
+*.tmp
+*~
+.*.sw[a-z]
+
+# Python bytecode (in case any helper scripts land here)
+__pycache__/
+*.pyc
+
+# Secrets / credentials (just in case Moonraker's secrets file ends up here)
+moonraker.secrets
+*.secret
