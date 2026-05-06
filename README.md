@@ -6,7 +6,7 @@ Klipper config for a Sovol SV08-based CoreXY printer with a heavily customised t
 
 - **Frame & motion:** Sovol SV08 (350×350×345 CoreXY, quad-Z)
 - **Mainboard:** BIGTREETECH Octopus Pro v1.1 (STM32H723) — motion + bed
-- **Toolhead:** [LDO Jabberwocky](https://docs.ldomotors.com/) — Phaetus Conch hotend, Bondtech compound + dual LDO Orbiter extruder, dual 3010 part fans, dual filament sensors, servo-actuated cutter, Nitehawk-36 toolboard (RP2040)
+- **Toolhead:** [LDO Jabberwocky](https://github.com/kinematicdigit/Jabberwocky) — Phaetus Conch hotend, Bondtech compound + dual LDO Orbiter extruder, dual 3010 part fans, dual filament sensors, servo-actuated cutter, Nitehawk-36 toolboard (RP2040)
 - **Probe:** Cartographer v4 (STM32G431, eddy-current scanner)
 - **Bed:** R3men 1000 W graphite AC-mains heated bed, NTC 100K MGB18-104F39050L32 thermistor, switched via SSR on HE1
 - **Host:** Raspberry Pi 5 running MainsailOS
