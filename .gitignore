@@ -5,6 +5,14 @@
 *~
 .*.sw[a-z]
 
+# Timestamped config backups Klipper writes before each SAVE_CONFIG
+# (e.g. printer-20260506_192243.cfg). These hold the PRE-save state --
+# never copy one of these back as your live config.
+printer-*.cfg
+
+# Moonraker / Klipper backup copies (e.g. .moonraker.conf.bkp)
+*.bkp
+
 # Python bytecode (in case any helper scripts land here)
 __pycache__/
 *.pyc
