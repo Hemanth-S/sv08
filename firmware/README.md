@@ -29,16 +29,28 @@ make flash FLASH_DEVICE=/dev/serial/by-id/usb-Klipper_rp2040_303339383405A682-if
 cp ~/sv08/firmware/octopus.config .config && make olddefconfig && make clean && make -j4
 ./scripts/flash-sdcard.sh /dev/serial/by-id/usb-Klipper_stm32h723xx_320020001151313531383332-if00 btt-octopus-pro-h723-v1.1
 
+# >>> Power-cycle the PRINTER now (not the Pi). The Octopus's bootloader reads
+# >>> the card in SDIO mode, but the script wrote it over SPI, so the board and
+# >>> card need a power-cycle before the bootloader flashes firmware.bin.
+# >>> Klipper's board definition marks it skip_verify for this reason.
+
+# After it powers back up, verify the flash:
+./scripts/flash-sdcard.sh -c /dev/serial/by-id/usb-Klipper_stm32h723xx_320020001151313531383332-if00 btt-octopus-pro-h723-v1.1
+
 sudo systemctl start klipper
 ```
+
+If the Nitehawk is missing after the power-cycle (`ls /dev/serial/by-id/`
+shows no `rp2040`), it's the boot-order issue: the toolhead hub came up late.
+Run `FIRMWARE_RESTART` once Klipper is started.
 
 Copy each file to `~/klipper/.config` rather than pointing `KCONFIG_CONFIG` at
 it: `make olddefconfig` rewrites the config file in place, which would leave
 this repo dirty on the Pi and block the next `git pull`.
 
-`flash-sdcard.sh` needs a FAT32 microSD card in the Octopus and the stock BTT
-bootloader. If the Octopus was set up with Katapult instead, flash it with
-Katapult's `flashtool.py`.
+`flash-sdcard.sh` needs a microSD card in the Octopus (FAT32, MBR, 32 GB or
+smaller, can be empty) and the stock BTT bootloader. The Octopus has the stock
+bootloader (confirmed 2026-09-30: no Katapult on the Pi).
 
 If the Nitehawk doesn't come back after `make flash`, hold its BOOT button while
 powering up (it appears as `2e8a:0003`), then run
