@@ -20,6 +20,7 @@ All three MCUs talk to the Pi over USB. Octopus has its own cable; Nitehawk-36 a
 | `printer.cfg` | Top-level entry — `[include]` directives + `[printer]` kinematics |
 | `mcu.cfg` | `[mcu]`, `[mcu nitehawk]`, `[mcu scanner]` |
 | `steppers.cfg` | `[stepper_*]` + `[tmc2209 stepper_*]` for X / Y / Z1-Z4 |
+| `firmware/` | Klipper firmware build configs for the Octopus and Nitehawk, plus reflash steps |
 
 Future files (commented out in `printer.cfg` until staged in):
 `extruder.cfg`, `heater_bed.cfg`, `scanner.cfg`, `fans.cfg`, `macros.cfg`.
