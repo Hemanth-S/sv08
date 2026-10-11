@@ -15,3 +15,13 @@ Note: the graphs label the dominant response on the *other* axis (the Y test's
 48 Hz peak shows in the X channel and vice versa), so `[adxl345] axes_map`
 doesn't match how the Cartographer is mounted. The shaper fit uses X+Y+Z, so
 the recommendations are unaffected; fix it with `AXES_MAP_CALIBRATION`.
+
+## Re-run after reassembly (2026-10-11 19:09, stock beam — the FYSETC Voron beam doesn't fit the SV08)
+
+| Axis | Klipper's pick | Balanced option (vibration left, max accel) |
+| --- | --- | --- |
+| X | `ei` 111.2 Hz: 5.4 %, <= 22500 | (same) |
+| Y | `3hump_ei` 81.4 Hz: 0 %, <= 4400 | `ei` 59.6 Hz / `mzv` 46.8 Hz: 2.3 %, <= 6500 |
+
+Matches the morning baseline within run-to-run noise (Y main peak ~47-51 Hz),
+so the reassembly didn't change the mechanics. Graphs: `shaper_after_*.png`.
